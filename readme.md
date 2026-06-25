@@ -1,25 +1,25 @@
-# Final Project and Deployment
+# 🛒 WittyMart - E-Commerce System
 
-## Objectives
-Build a fully functional web application.
-Apply HTML, CSS, and JavaScript concepts learned.
-Deploy the project using GitHub Pages, Netlify, or Vercel.
+## About
+A fully functional e-commerce web application built with HTML, CSS, and JavaScript. Features include product browsing, shopping cart, user authentication, and responsive design.
 
-## Instructions
-Choose one of the following project ideas:
-Blog Website: Implement a multi-page site with navigation.
-Ecommerce Website: Implement a multi-page site with navigation.
+## Tech Stack
+- HTML5, CSS3, JavaScript (ES6)
+- Bootstrap 5, Font Awesome
+- Netlify for deployment
 
->[!NOTE]
-> - Include at least:
-> - A responsive design.
-> - JavaScript interactivity.
-> - A deployment link.
+## Features
+- 🛍️ Product catalog
+- 🛒 Shopping cart
+- 📱 Fully responsive
+- 🔐 User login/register
+- 💳 Checkout system
 
-## Tasks
+## Live Demo
+🔗 [https://wittymart.netlify.app/](https://wittymart.netlify.app/)
 
-Create a well-structured HTML5 document.
-Use at least 5 different HTML elements.
-Ensure semantic correctness.
+## Developer
+**Jacob Witty** - Witty Highbrow Technologies
 
-Good luck and happy coding! 🚀💻
+---
+*Final Project - June 2026 🚀*
