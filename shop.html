@@ -1,206 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop - WittyMart</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop - WittyMart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .logo h1 {
+            font-size: 1.2rem;
+            color: #ff6738;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .categories-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .categories-btn:hover {
+            background: #e55a2b;
+            transform: scale(1.02);
+        }
+        .categories-btn i {
+            font-size: 16px;
+        }
+        .menu-toggle {
+            display: none;
+            padding: 8px 12px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .menu-toggle:hover {
+            background: #e55a2b;
+        }
+        .close-btn {
+            display: none;
+        }
+        nav {
+            flex: 1;
+            min-width: 200px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links li a {
+            display: block;
+            padding: 8px 14px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-links li a:hover {
+            background: #ff6738;
+            color: #fff;
+        }
+        .nav-links li a.active {
+            background: #ff6738;
+            color: #fff;
+        }
+        .theme-toggle {
+            padding: 8px 12px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: #f0f0f0;
+        }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+        .sidebar-overlay.active {
+            display: block;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 2001;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ff6738;
+            margin-bottom: 20px;
+        }
+        .sidebar-header h2 {
+            color: #333;
+        }
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .sidebar-close:hover {
+            color: #ff6738;
+            transform: rotate(90deg);
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            background: #ff6738;
+            color: #fff;
+            padding-left: 20px;
+        }
+        .sidebar ul li a i {
+            margin-right: 10px;
+            color: #ff6738;
+            width: 20px;
+        }
+        .sidebar ul li a:hover i {
+            color: #fff;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .products-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .products-section h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .products-section h2 span {
+            color: #ff6738;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .product {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-color: #ff6738;
+        }
+        .product img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .product p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .product .price {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ff6738;
+            margin-bottom: 15px;
+        }
+        .product .add-to-cart {
+            padding: 10px 25px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .product .add-to-cart:hover {
+            background: #e55a2b;
+            transform: scale(1.02);
+        }
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+        }
+        .footer-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+        .footer-card h2 {
+            font-size: 1.1rem;
+            color: #ff6738;
+            margin-bottom: 15px;
+        }
+        .footer-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+        .footer-card ul {
+            list-style: none;
+        }
+        .footer-card ul li {
+            margin-bottom: 8px;
+        }
+        .footer-card ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-card ul li a:hover {
+            color: #ff6738;
+            padding-left: 5px;
+        }
+        .footer-card a {
+            color: #ff6738;
+            text-decoration: none;
+        }
+        .footer-card a:hover {
+            text-decoration: underline;
+        }
+        #newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+        #newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+        #newsletter-form button {
+            padding: 10px 20px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #newsletter-form button:hover {
+            background: #e55a2b;
+        }
+        #footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: nowrap;
+            }
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            nav.show {
+                display: block;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav-links li a {
+                padding: 12px 15px;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .categories-btn span {
+                display: none;
+            }
+            .categories-btn {
+                padding: 8px 12px;
+            }
+            .logo h1 {
+                font-size: 1rem;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .product {
+                padding: 15px;
+            }
+            .product img {
+                height: 140px;
+            }
+            .sidebar {
+                width: 280px;
+                left: -300px;
+            }
+            .footer-row {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            #newsletter-form {
+                flex-direction: column;
+            }
+            .products-section {
+                padding: 20px;
+            }
+            .products-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            .logo h1 {
+                font-size: 0.9rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .product {
+                padding: 10px;
+            }
+            .product img {
+                height: 120px;
+            }
+            .product h3 {
+                font-size: 0.9rem;
+            }
+            .product .price {
+                font-size: 1rem;
+            }
+            .product .add-to-cart {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            .products-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <button class="menu-toggle" onclick="togglemenu()">☰</button>  
-        <button class="close-btn" onclick="closemenu()">✖</button>  
-        <div class="container">
+        <div class="header-container">
             <div class="logo">
                 <img src="images/Witty Mart.png" alt="WittyMart Logo">
-            <h1> WittyMart Shop</h1>
+                <h1>WittyMart Shop</h1>
             </div>
-            <br>
+            
             <nav id="main-nav">
                 <ul class="nav-links" id="nav-links">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="shop.html" class="active">Shop</a>
-                    </li>
-                    <li>
-                        <a href="cart.html">Cart</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                    <li>
-                        <a href="terms.html">Terms</a>                            
-                    </li>
-                    <li>
-                        <a href="home.html">
-                            Account
-                            <i class="fa fa-arrow-down"></i>
-                        </a>
-                    </li>                         
-                  <button class="theme-toggle" onclick="toggleTheme()" id="theme-icon">🌞</button>                       
-                </ul>                    
-            </nav>
-        </div>
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Categories</button>
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-content">
-                <h2>Categories</h2>
-                <ul>
-                    <li>
-                        <a href="breadcrumbs.html?#deals">Hot Deals</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#electronics">Electronics</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#fashion">Fashion</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#home-living">Home & Living</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#beauty-health">Beauty & Healthy</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#sports-outdoors">Sports & Outdoors</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#toys-hobbies">Toys & Hobbies</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#books-stationery">Books & Stationery</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#automotive">Automotive</a>
-                    </li>
-                    <li>
-                        <a href="breadcrumbs.html?#grocery">Grocery</a>
-                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Shop</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="home.html">Account</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-icon">🌞</button></li>
                 </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="categories-btn" onclick="toggleSidebar()">
+                    <i class="fas fa-th-list"></i>
+                    <span>Categories</span>
+                </button>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
-      
 
-  <main>
-    <section class="products-section">
-      <h2>Our Smart Picks</h2>
-      <div class="products-grid">
-        <!-- Product 1 -->
-        <div class="product">
-          <img src="images/watch3.jpg" alt="Smart Watch" />
-          <h3>Smart Watch</h3>
-          <p>Keep track of time and health.</p>
-          <span class="price">Ksh 4,500</span>
-          <button class="add-to-cart" data-product="Smart Watch">Add to Cart</button>
-        </div>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-        <!-- Product 2 -->
-        <div class="product">
-          <img src="images/head4.jpg" alt="Bluetooth Headphones" />
-          <h3>Bluetooth Headphones</h3>
-          <p>Immersive sound experience.</p>
-          <span class="price">Ksh 3,000</span>
-          <button class="add-to-cart" data-product="Bluetooth Headphones">Add to Cart</button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-th-list" style="color:#ff6738;"></i> Categories</h2>
+            <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
         </div>
-
-        <!-- Product 3 -->
-        <div class="product">
-          <img src="images/mouse2.webp" alt="Wireless Mouse" />
-          <h3>Wireless Mouse</h3>
-          <p>Ergonomic and smooth control.</p>
-          <span class="price">Ksh 1,200</span>
-          <button class="add-to-cart" data-product="Wireless Mouse">Add to Cart</button>
-        </div>
-
-        <!-- Add more products as needed -->
-      </div>
-    </section>
-  </main>
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-row">
-        <div class="card footer-logo">
-            <h1>WittyMart</h1>
-            <p>Smart Shopping for Witty Minds!</p>
-        </div>
-        <div class=" card footer-newsletter">
-            <h2>Subscribe to Our Newsletter</h2><br>
-            <form id="newsletter-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-        <div class=" card footer-contact">
-            <h2>Contact Us</h2>
-            <p>
-                Email:
-                <a href="mailto:kaujacob4@gmail.com">kaujacob4@gmail.com</a>
-            </p>
-            <p>Phone: +254 768 374 497</p>
-            <p>Location: Nairobi, Kenya</p>
-        </div>
+        <ul>
+            <li><a href="breadcrumbs.html?#deals"><i class="fas fa-fire"></i> Hot Deals</a></li>
+            <li><a href="breadcrumbs.html?#electronics"><i class="fas fa-mobile-alt"></i> Electronics</a></li>
+            <li><a href="breadcrumbs.html?#fashion"><i class="fas fa-tshirt"></i> Fashion</a></li>
+            <li><a href="breadcrumbs.html?#home-living"><i class="fas fa-home"></i> Home & Living</a></li>
+            <li><a href="breadcrumbs.html?#beauty-health"><i class="fas fa-spa"></i> Beauty & Health</a></li>
+            <li><a href="breadcrumbs.html?#sports-outdoors"><i class="fas fa-running"></i> Sports & Outdoors</a></li>
+            <li><a href="breadcrumbs.html?#toys-hobbies"><i class="fas fa-gamepad"></i> Toys & Hobbies</a></li>
+            <li><a href="breadcrumbs.html?#books-stationery"><i class="fas fa-book"></i> Books & Stationery</a></li>
+            <li><a href="breadcrumbs.html?#automotive"><i class="fas fa-car"></i> Automotive</a></li>
+            <li><a href="breadcrumbs.html?#grocery"><i class="fas fa-shopping-basket"></i> Grocery</a></li>
+        </ul>
     </div>
-    <div class="footer-row">
-        <div class="card footer-links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="shop.html">Shop</a>
-                </li>
-                <li>
-                    <a href="cart.html">Cart</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-            </ul>
+
+    <!-- Main Content -->
+    <main>
+        <section class="products-section">
+            <h2>Our <span>Smart Picks</span></h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product">
+                    <img src="images/watch3.jpg" alt="Smart Watch" />
+                    <h3>Smart Watch</h3>
+                    <p>Keep track of time and health.</p>
+                    <span class="price">Ksh 4,500</span>
+                    <button class="add-to-cart" data-product="Smart Watch">Add to Cart</button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product">
+                    <img src="images/head4.jpg" alt="Bluetooth Headphones" />
+                    <h3>Bluetooth Headphones</h3>
+                    <p>Immersive sound experience.</p>
+                    <span class="price">Ksh 3,000</span>
+                    <button class="add-to-cart" data-product="Bluetooth Headphones">Add to Cart</button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product">
+                    <img src="images/mouse2.webp" alt="Wireless Mouse" />
+                    <h3>Wireless Mouse</h3>
+                    <p>Ergonomic and smooth control.</p>
+                    <span class="price">Ksh 1,200</span>
+                    <button class="add-to-cart" data-product="Wireless Mouse">Add to Cart</button>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product">
+                    <img src="images/smart.jpg" alt="Smartphone" />
+                    <h3>Smartphone Pro</h3>
+                    <p>Latest smartphone with amazing features.</p>
+                    <span class="price">Ksh 25,000</span>
+                    <button class="add-to-cart" data-product="Smartphone Pro">Add to Cart</button>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product">
+                    <img src="images/watch5.jpg" alt="Fitness Band" />
+                    <h3>Fitness Band</h3>
+                    <p>Track your fitness goals.</p>
+                    <span class="price">Ksh 2,800</span>
+                    <button class="add-to-cart" data-product="Fitness Band">Add to Cart</button>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product">
+                    <img src="images/laptops.jpeg" alt="Laptop" />
+                    <h3>Ultrabook Laptop</h3>
+                    <p>Lightweight and powerful performance.</p>
+                    <span class="price">Ksh 55,000</span>
+                    <button class="add-to-cart" data-product="Ultrabook Laptop">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <div class="footer-card">
+                <h2>WittyMart</h2>
+                <p>Smart Shopping for Witty Minds!</p>
+                <br>
+                <p>© 2025 WittyMart. All rights reserved.</p>
+            </div>
+            <div class="footer-card">
+                <h2>Subscribe to Our Newsletter</h2>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-card">
+                <h2>Contact Us</h2>
+                <p>Email: <a href="mailto:kaujacob4@gmail.com">kaujacob4@gmail.com</a></p>
+                <p>Phone: +254 768 374 497</p>
+                <p>Location: Nairobi, Kenya</p>
+            </div>
         </div>
-        <div class="card footer-social">
-            <h2>Follow Us</h2>
-            <ul>
-                <li>
-                    <a href="#">Facebook</a>
-                </li>
-                <li>
-                    <a href="#">Twitter</a>
-                </li>
-                <li>
-                    <a href="#">Instagram</a>
-                </li>
-            </ul>
+        <div class="footer-row">
+            <div class="footer-card">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-card">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-card">
+                <h2>Legal</h2>
+                <ul>
+                    <li><a href="terms.html#privacy">Privacy Policy</a></li>
+                    <li><a href="terms.html#terms">Terms of Service</a></li>
+                    <li><a href="terms.html#returns">Return Policy</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="card footer-legal">
-            <h2>Legal</h2>
-            <ul>
-                <li>
-                  <a href="terms.html#privacy">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="terms.html#terms">Terms of Service</a>
-                </li>
-                <li>
-                  <a href="terms.html#returns">Return Policy</a>
-                </li>
-              </ul>
+        <div id="footer-bottom">
+            <p>Built with 💖 by Witty Highbrow Technologies!</p>
         </div>
-    </div>
-    <div class="footer-row" id="footer-bottom">
-        <p>&copy; 2025 WittyMart. All rights reserved.</p>
-        <p>Built with 💖 by Witty Highbrow Technologies!</p>
-    </div>
-</footer>
-  <script src="script.js"></script>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('show');
+        }
+
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            // Close mobile menu if open
+            document.getElementById('main-nav').classList.remove('show');
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.style.background === '#1a1a2e') {
+                body.style.background = '#f5f5f5';
+                body.style.color = '#333';
+                icon.textContent = '🌞';
+            } else {
+                body.style.background = '#1a1a2e';
+                body.style.color = '#fff';
+                icon.textContent = '🌙';
+            }
+        }
+
+        // Newsletter Form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing! You will receive updates from WittyMart.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+
+        // Add to Cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                alert(`${product} added to cart!`);
+            });
+        });
+
+        // Close sidebar on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('main-nav').classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
