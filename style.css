@@ -1,5 +1,3 @@
-/* style.css - Professional, cohesive styling for all WittyMart pages */
-
 /* ==== VARIABLES & RESET ==== */
 :root {
   /* Primary palette */
@@ -17,11 +15,11 @@
 }
 /* === DARK THEME OVERRIDES === */
 body.dark-theme {
-  --clr-light: #1a1a1a; /* background */
-  --clr-dark: #ffffff; /* headings/text highlights */
-  --clr-text: #cccccc; /* general text */
-  --clr-primary: teal; /* slightly softer blue */
-  --clr-accent: #ff7675; /* warm red accent */
+  --clr-light: #1a1a1a; 
+  --clr-dark: #ffffff; 
+  --clr-text: #cccccc; 
+  --clr-primary: teal; 
+  --clr-accent: #ff7675;
   --clr-contact: #797878;
   --clr-title: #ffffff;
   --clr-hover: teal;
