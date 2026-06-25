@@ -155,7 +155,7 @@ header {
 /* ==== SIDEBAR ==== */
 .sidebar-toggle {
   position: fixed;
-  top: 13vh;
+  top: 19vh;
   left: 20px;
   z-index: 999;
   background-color: var(--clr-accent);
