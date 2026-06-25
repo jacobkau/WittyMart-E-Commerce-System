@@ -136,6 +136,7 @@ header {
 }
 #menu-nav {
   display: flex;
+  margin-left:200px;
 }
 .menu-toggle,
 .close-btn {
