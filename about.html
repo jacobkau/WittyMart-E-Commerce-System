@@ -1,288 +1,834 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Us - WittyMart</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <!-- Header -->
-        <header>
-            <button class="menu-toggle" onclick="togglemenu()">☰</button>
-            <button class="close-btn" onclick="closemenu()">✖</button>
-            <div class="container">
-                <div class="logo">
-                    <img src="images/Witty Mart.png" alt="WittyMart Logo">
-                    <h1> WittyMart Shop</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - WittyMart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .logo h1 {
+            font-size: 1.2rem;
+            color: #ff6738;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .categories-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .categories-btn:hover {
+            background: #e55a2b;
+            transform: scale(1.02);
+        }
+        .categories-btn i {
+            font-size: 16px;
+        }
+        .menu-toggle {
+            display: none;
+            padding: 8px 12px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .menu-toggle:hover {
+            background: #e55a2b;
+        }
+        .close-btn {
+            display: none;
+        }
+        nav {
+            flex: 1;
+            min-width: 200px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links li a {
+            display: block;
+            padding: 8px 14px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-links li a:hover {
+            background: #ff6738;
+            color: #fff;
+        }
+        .nav-links li a.active {
+            background: #ff6738;
+            color: #fff;
+        }
+        .theme-toggle {
+            padding: 8px 12px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: #f0f0f0;
+        }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+        .sidebar-overlay.active {
+            display: block;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 2001;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ff6738;
+            margin-bottom: 20px;
+        }
+        .sidebar-header h2 {
+            color: #333;
+        }
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .sidebar-close:hover {
+            color: #ff6738;
+            transform: rotate(90deg);
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            background: #ff6738;
+            color: #fff;
+            padding-left: 20px;
+        }
+        .sidebar ul li a i {
+            margin-right: 10px;
+            color: #ff6738;
+            width: 20px;
+        }
+        .sidebar ul li a:hover i {
+            color: #fff;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .about {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .about h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .about h1 span {
+            color: #ff6738;
+        }
+        .about h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 25px 0 15px;
+        }
+        .about h2 i {
+            color: #ff6738;
+            margin-right: 10px;
+        }
+        .about p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .about ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 20px;
+        }
+        .about ul li {
+            padding: 8px 0;
+            color: #555;
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .about ul li:last-child {
+            border-bottom: none;
+        }
+        .about ul li i {
+            color: #ff6738;
+            margin-right: 10px;
+            width: 20px;
+        }
+        .about ul li strong {
+            color: #333;
+        }
+        .faq {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+        .faq h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: #ff6738;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 15px 20px;
+            background: #f9f9f9;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .faq-question:hover {
+            background: #ff6738;
+            color: #fff;
+        }
+        .faq-question::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+        .faq-question.active {
+            background: #ff6738;
+            color: #fff;
+        }
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        .faq-answer.open {
+            padding: 15px 20px;
+            max-height: 300px;
+        }
+        .faq-answer p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .contact-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border: 2px solid #ff6738;
+            text-align: center;
+        }
+        .contact-box h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .contact-box h2 i {
+            color: #ff6738;
+            margin-right: 10px;
+        }
+        .contact-box p {
+            color: #555;
+            margin: 8px 0;
+            font-size: 1.05rem;
+        }
+        .contact-box p i {
+            color: #ff6738;
+            margin-right: 10px;
+            width: 25px;
+        }
+        .contact-box a {
+            color: #ff6738;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+        }
+        .footer-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+        .footer-card h2 {
+            font-size: 1.1rem;
+            color: #ff6738;
+            margin-bottom: 15px;
+        }
+        .footer-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+        .footer-card ul {
+            list-style: none;
+        }
+        .footer-card ul li {
+            margin-bottom: 8px;
+        }
+        .footer-card ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-card ul li a:hover {
+            color: #ff6738;
+            padding-left: 5px;
+        }
+        .footer-card a {
+            color: #ff6738;
+            text-decoration: none;
+        }
+        .footer-card a:hover {
+            text-decoration: underline;
+        }
+        #newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+        #newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+        #newsletter-form button {
+            padding: 10px 20px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #newsletter-form button:hover {
+            background: #e55a2b;
+        }
+        #footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: nowrap;
+            }
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            nav.show {
+                display: block;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav-links li a {
+                padding: 12px 15px;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .categories-btn span {
+                display: none;
+            }
+            .categories-btn {
+                padding: 8px 12px;
+            }
+            .logo h1 {
+                font-size: 1rem;
+            }
+            .sidebar {
+                width: 280px;
+                left: -300px;
+            }
+            .about {
+                padding: 20px;
+            }
+            .about h1 {
+                font-size: 2rem;
+            }
+            .about h2 {
+                font-size: 1.3rem;
+            }
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 12px 15px;
+            }
+            .contact-box {
+                padding: 20px;
+            }
+            .footer-row {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            #newsletter-form {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            .logo h1 {
+                font-size: 0.9rem;
+            }
+            .about {
+                padding: 15px;
+            }
+            .about h1 {
+                font-size: 1.5rem;
+            }
+            .about h2 {
+                font-size: 1.1rem;
+            }
+            .about p {
+                font-size: 0.95rem;
+            }
+            .about ul li {
+                font-size: 0.95rem;
+            }
+            .faq-question {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+            .faq-answer.open {
+                padding: 10px 15px;
+            }
+            .faq-answer p {
+                font-size: 0.9rem;
+            }
+            .contact-box {
+                padding: 15px;
+            }
+            .contact-box p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/Witty Mart.png" alt="WittyMart Logo">
+                <h1>WittyMart Shop</h1>
+            </div>
+            
+            <nav id="main-nav">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="home.html">Account</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-icon">🌞</button></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="categories-btn" onclick="toggleSidebar()">
+                    <i class="fas fa-th-list"></i>
+                    <span>Categories</span>
+                </button>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-th-list" style="color:#ff6738;"></i> Categories</h2>
+            <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
+        </div>
+        <ul>
+            <li><a href="breadcrumbs.html?#deals"><i class="fas fa-fire"></i> Hot Deals</a></li>
+            <li><a href="breadcrumbs.html?#electronics"><i class="fas fa-mobile-alt"></i> Electronics</a></li>
+            <li><a href="breadcrumbs.html?#fashion"><i class="fas fa-tshirt"></i> Fashion</a></li>
+            <li><a href="breadcrumbs.html?#home-living"><i class="fas fa-home"></i> Home & Living</a></li>
+            <li><a href="breadcrumbs.html?#beauty-health"><i class="fas fa-spa"></i> Beauty & Health</a></li>
+            <li><a href="breadcrumbs.html?#sports-outdoors"><i class="fas fa-running"></i> Sports & Outdoors</a></li>
+            <li><a href="breadcrumbs.html?#toys-hobbies"><i class="fas fa-gamepad"></i> Toys & Hobbies</a></li>
+            <li><a href="breadcrumbs.html?#books-stationery"><i class="fas fa-book"></i> Books & Stationery</a></li>
+            <li><a href="breadcrumbs.html?#automotive"><i class="fas fa-car"></i> Automotive</a></li>
+            <li><a href="breadcrumbs.html?#grocery"><i class="fas fa-shopping-basket"></i> Grocery</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="about">
+            <h1><i class="fas fa-info-circle" style="color:#ff6738;"></i> About <span>WittyMart</span></h1>
+            
+            <p>WittyMart is your go-to smart shopping platform designed to serve the modern shopper. Whether you're hunting for daily essentials, tech gadgets, home goods, fashion, or unique finds, WittyMart connects you with top-quality products at competitive prices. We help witty minds like you save time, money, and energy by combining intelligent features with a smooth and secure online experience. Our vision is to redefine e-commerce in Kenya and beyond through innovation, convenience, and customer satisfaction.</p>
+            
+            <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+            <p>To provide customers with a seamless, user-friendly, and intelligent shopping experience powered by modern web technology. We aim to empower every shopper with the tools to make informed decisions, enjoy fast delivery, and feel confident in their online purchases.</p>
+            
+            <h2><i class="fas fa-gift"></i> What We Offer</h2>
+            <ul>
+                <li><i class="fas fa-shopping-bag"></i> A wide range of curated products from verified vendors and brands.</li>
+                <li><i class="fas fa-truck"></i> Reliable nationwide delivery services with real-time tracking.</li>
+                <li><i class="fas fa-lock"></i> Secure payments via M-Pesa, cards, PayPal, and bank transfer.</li>
+                <li><i class="fas fa-undo"></i> Easy return and refund policies with dedicated customer support.</li>
+                <li><i class="fas fa-mobile-alt"></i> A responsive shopping interface for both mobile and desktop users.</li>
+            </ul>
+            
+            <h2><i class="fas fa-star"></i> Why Choose Us?</h2>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>Wide selection:</strong> Browse thousands of top-rated, affordable products across multiple categories.</li>
+                <li><i class="fas fa-lightbulb"></i> <strong>Smart features:</strong> Wishlist, product comparisons, reviews, and intelligent recommendations to help you shop better.</li>
+                <li><i class="fas fa-bolt"></i> <strong>Fast and secure checkout:</strong> Optimized for speed, trust, and simplicity – no stress, no delays.</li>
+                <li><i class="fas fa-headset"></i> <strong>Friendly local support:</strong> Our Kenyan-based support team is available 7 days a week for any issues or inquiries.</li>
+                <li><i class="fas fa-heart" style="color:#ff6738;"></i> <strong>Built with 💙:</strong> WittyMart is proudly powered by <em>Witty Highbrow Technologies</em>, a tech-driven company passionate about innovation and customer happiness.</li>
+            </ul>
+            
+            <h2><i class="fas fa-rocket"></i> Join the WittyMart Experience</h2>
+            <p>We believe shopping should be smart, secure, and satisfying. Whether you're a first-time buyer or a loyal customer, WittyMart is here to serve you better every time. Start your journey with us today and discover the difference of shopping the witty way.</p>
+            
+            <!-- FAQ Section -->
+            <div class="faq">
+                <h2><i class="fas fa-question-circle" style="color:#ff6738;"></i> Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Do you offer delivery services, and how long does it take?</button>
+                    <div class="faq-answer">
+                        <p>Yes! We provide delivery services across the country using reliable courier partners. Standard delivery takes 2–5 business days, depending on your location. You will receive tracking information once your order is shipped.</p>
+                    </div>
                 </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Can I return items if I change my mind?</button>
+                    <div class="faq-answer">
+                        <p>Absolutely. You can return items within 7 days of delivery, provided they are unused, in their original packaging, and in resellable condition. Some exclusions apply (e.g., perishable or hygiene-sensitive goods).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">How do I track my order after purchase?</button>
+                    <div class="faq-answer">
+                        <p>Once your order is dispatched, we'll send you a confirmation email with a tracking link. You can also log into your WittyMart account and view the order status in your dashboard under "My Orders".</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Do you offer customer support if I face issues?</button>
+                    <div class="faq-answer">
+                        <p>Yes, our support team is available 7 days a week via email, live chat, and phone. We're here to assist you with product queries, order issues, returns, and more.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">What payment methods do you accept?</button>
+                    <div class="faq-answer">
+                        <p>We accept multiple payment options including M-Pesa, credit/debit cards, PayPal, and direct bank transfers. All transactions are securely processed to protect your data.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Is it safe to shop on WittyMart?</button>
+                    <div class="faq-answer">
+                        <p>Yes! WittyMart uses SSL encryption and secure payment gateways to protect your personal and payment information. Your privacy and security are our top priorities.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Box -->
+            <div class="contact-box">
+                <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:kaujacob4@gmail.com">kaujacob4@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> Phone: <a href="tel:+254768374497">+254 768 374 497</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Office: Nairobi, Kenya</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <div class="footer-card">
+                <h2>WittyMart</h2>
+                <p>Smart Shopping for Witty Minds!</p>
                 <br>
-                <nav id="main-nav">
-                    <ul class="nav-links" id="nav-links">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="shop.html">Shop</a>
-                        </li>
-                        <li>
-                            <a href="cart.html">Cart</a>
-                        </li>
-                        <li>
-                            <a href="about.html" class="active">About</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
-                        <li>
-                            <a href="terms.html">Terms</a>
-                        </li>
-                        <li>
-                            <a href="home.html">
-                                Account
-                                <i class="fa fa-arrow-down"></i>
-                            </a>
-                        </li>
-                        <button class="theme-toggle" onclick="toggleTheme()" id="theme-icon">🌞</button>
-                    </ul>
-                </nav>
+                <p>© 2025 WittyMart. All rights reserved.</p>
             </div>
-            <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Categories</button>
-            <div class="sidebar" id="sidebar">
-                <div class="sidebar-content">
-                    <h2>Categories</h2>
-                    <ul>
-                        <li>
-                            <a href="breadcrumbs.html?#deals">Hot Deals</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#electronics">Electronics</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#fashion">Fashion</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#home-living">Home & Living</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#beauty-health">Beauty & Healthy</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#sports-outdoors">Sports & Outdoors</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#toys-hobbies">Toys & Hobbies</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#books-stationery">Books & Stationery</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#automotive">Automotive</a>
-                        </li>
-                        <li>
-                            <a href="breadcrumbs.html?#grocery">Grocery</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="footer-card">
+                <h2>Subscribe to Our Newsletter</h2>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
-        </header>
-        <!-- About Section -->
-        <main>
-            <section class="about">
-                <!-- Information about us-->
-                <div class="faq">
-                    <h1>About WittyMart</h1>
-                    <p>
-                        WittyMart is your go-to smart shopping platform designed to serve the modern shopper. Whether you're hunting for daily essentials, tech gadgets, home goods, fashion, or unique finds, WittyMart connects you with top-quality products at competitive prices. We help witty minds like you save time, money, and energy by combining intelligent features with a smooth and secure online experience. Our vision is to redefine e-commerce in Kenya and beyond through innovation, convenience, and customer satisfaction.
-                    </p>
-                    <h2>Our Mission</h2>
-                    <p>
-                        To provide customers with a seamless, user-friendly, and intelligent shopping experience powered by modern web technology. We aim to empower every shopper with the tools to make informed decisions, enjoy fast delivery, and feel confident in their online purchases.
-                    </p>
-                    <h2>What We Offer</h2>
-                    <ul>
-                        <li>🛍️ A wide range of curated products from verified vendors and brands.</li>
-                        <li>🚚 Reliable nationwide delivery services with real-time tracking.</li>
-                        <li>🔒 Secure payments via M-Pesa, cards, PayPal, and bank transfer.</li>
-                        <li>📦 Easy return and refund policies with dedicated customer support.</li>
-                        <li>📱 A responsive shopping interface for both mobile and desktop users.</li>
-                    </ul>
-                    <h2>Why Choose Us?</h2>
-                    <ul>
-                        <li>
-                            ✅
-                            <strong>Wide selection:</strong>
-                            Browse thousands of top-rated, affordable products across multiple categories.
-                        </li>
-                        <li>
-                            ✅
-                            <strong>Smart features:</strong>
-                            Wishlist, product comparisons, reviews, and intelligent recommendations to help you shop better.
-                        </li>
-                        <li>
-                            ✅
-                            <strong>Fast and secure checkout:</strong>
-                            Optimized for speed, trust, and simplicity – no stress, no delays.
-                        </li>
-                        <li>
-                            ✅
-                            <strong>Friendly local support:</strong>
-                            Our Kenyan-based support team is available 7 days a week for any issues or inquiries.
-                        </li>
-                        <li>
-                            ✅
-                            <strong>Built with 💙:</strong>
-                            WittyMart is proudly powered by
-                            <em>Witty Highbrow Technologies</em>
-                            , a tech-driven company passionate about innovation and customer happiness.
-                        </li>
-                    </ul>
-                    <h2>Join the WittyMart Experience</h2>
-                    <p>
-                        We believe shopping should be smart, secure, and satisfying. Whether you're a first-time buyer or a loyal customer, WittyMart is here to serve you better every time. Start your journey with us today and discover the difference of shopping the witty way.
-                    </p>
-                </div>
-                <!-- FAQ (Interactive) -->
-                <div class="faq">
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Do you offer delivery services, and how long does it take?</button>
-                        <div class="faq-answer">
-                            <p>Yes! We provide delivery services across the country using reliable courier partners. Standard delivery takes 2–5 business days, depending on your location. You will receive tracking information once your order is shipped.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Can I return items if I change my mind?</button>
-                        <div class="faq-answer">
-                            <p>Absolutely. You can return items within 7 days of delivery, provided they are unused, in their original packaging, and in resellable condition. Some exclusions apply (e.g., perishable or hygiene-sensitive goods).</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">How do I track my order after purchase?</button>
-                        <div class="faq-answer">
-                            <p>Once your order is dispatched, we’ll send you a confirmation email with a tracking link. You can also log into your WittyMart account and view the order status in your dashboard under "My Orders".</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Do you offer customer support if I face issues?</button>
-                        <div class="faq-answer">
-                            <p>Yes, our support team is available 7 days a week via email, live chat, and phone. We’re here to assist you with product queries, order issues, returns, and more.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">What payment methods do you accept?</button>
-                        <div class="faq-answer">
-                            <p>We accept multiple payment options including M-Pesa, credit/debit cards, PayPal, and direct bank transfers. All transactions are securely processed to protect your data.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ(this)">Is it safe to shop on WittyMart?</button>
-                        <div class="faq-answer">
-                            <p>Yes! WittyMart uses SSL encryption and secure payment gateways to protect your personal and payment information. Your privacy and security are our top priorities.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Contact -->
-                <div class="contact">
-                    <h2>Contact Us</h2>
-                    <p>
-                        <strong>Email:</strong>
-                        kaujacob4@gmail.com
-                    </p>
-                    <p>
-                        <strong>Phone:</strong>
-                        +254 768 374 497
-                    </p>
-                    <p>
-                        <strong>Office:</strong>
-                        Nairobi, Kenya
-                    </p>
-                </div>
-            </section>
-        </main>
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-row">
-                <div class="card footer-logo">
-                    <h1>WittyMart</h1>
-                    <p>Smart Shopping for Witty Minds!</p>
-                </div>
-                <div class=" card footer-newsletter">
-                    <h2>Subscribe to Our Newsletter</h2>
-                    <br>
-                    <form id="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-                <div class=" card footer-contact">
-                    <h2>Contact Us</h2>
-                    <p>
-                        Email:
-                        <a href="mailto:kaujacob4@gmail.com">kaujacob4@gmail.com</a>
-                    </p>
-                    <p>Phone: +254 768 374 497</p>
-                    <p>Location: Nairobi, Kenya</p>
-                </div>
+            <div class="footer-card">
+                <h2>Contact Us</h2>
+                <p>Email: <a href="mailto:kaujacob4@gmail.com">kaujacob4@gmail.com</a></p>
+                <p>Phone: +254 768 374 497</p>
+                <p>Location: Nairobi, Kenya</p>
             </div>
-            <div class="footer-row">
-                <div class="card footer-links">
-                    <h2>Quick Links</h2>
-                    <ul>
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="shop.html">Shop</a>
-                        </li>
-                        <li>
-                            <a href="cart.html">Cart</a>
-                        </li>
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
-                                contact us
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card footer-social">
-                    <h2>Follow Us</h2>
-                    <ul>
-                        <li>
-                            <a href="#">Facebook</a>
-                        </li>
-                        <li>
-                            <a href="#">Twitter</a>
-                        </li>
-                        <li>
-                            <a href="#">Instagram</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card footer-legal">
-                    <h2>Legal</h2>
-                    <ul>
-                        <li>
-                            <a href="terms.html#privacy">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="terms.html#terms">Terms of Service</a>
-                        </li>
-                        <li>
-                            <a href="terms.html#returns">Return Policy</a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="footer-row">
+            <div class="footer-card">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
-            <div class="footer-row" id="footer-bottom">
-                <p>&copy; 2025 WittyMart. All rights reserved.</p>
-                <p>Built with 💖 by Witty Highbrow Technologies!</p>
+            <div class="footer-card">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
             </div>
-        </footer>
-        <!-- Script -->
-        <script src="script.js"></script>
-    </body>
+            <div class="footer-card">
+                <h2>Legal</h2>
+                <ul>
+                    <li><a href="terms.html#privacy">Privacy Policy</a></li>
+                    <li><a href="terms.html#terms">Terms of Service</a></li>
+                    <li><a href="terms.html#returns">Return Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer-bottom">
+            <p>Built with 💖 by Witty Highbrow Technologies!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('show');
+        }
+
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.getElementById('main-nav').classList.remove('show');
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.style.background === '#1a1a2e') {
+                body.style.background = '#f5f5f5';
+                body.style.color = '#333';
+                icon.textContent = '🌞';
+            } else {
+                body.style.background = '#1a1a2e';
+                body.style.color = '#fff';
+                icon.textContent = '🌙';
+            }
+        }
+
+        // Newsletter Form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing! You will receive updates from WittyMart.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+
+        // FAQ Toggle
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            
+            // Close all FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('open');
+            });
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle the clicked one
+            if (!isOpen) {
+                answer.classList.add('open');
+                button.classList.add('active');
+            }
+        }
+
+        // Close sidebar on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('main-nav').classList.remove('show');
+            }
+        });
+    </script>
+</body>
 </html>
