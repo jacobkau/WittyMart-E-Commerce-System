@@ -119,6 +119,7 @@ header {
 }
 .nav-links {
   list-style: none;
+  margin-left:6vh;
   display: flex;
   gap: 1.5rem;
 }
@@ -136,7 +137,6 @@ header {
 }
 #menu-nav {
   display: flex;
-  margin-left:200px;
 }
 .menu-toggle,
 .close-btn {
