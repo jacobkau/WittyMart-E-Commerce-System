@@ -1871,3 +1871,26 @@ body.dark-mode .theme-toggle:hover {
                 font-size: 0.95rem;
             }
         }
+
+/* === CATEGORIES PAGE === */
+
+        .linker {
+            text-align: center;
+            margin: 10px 0 20px;
+        }
+        .linkerbtn {
+            display: inline-block;
+            padding: 10px 30px;
+            background: transparent;
+            color: #ff6738;
+            border: 2px solid #ff6738;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .linkerbtn:hover {
+            background: #ff6738;
+            color: #fff;
+            transform: scale(1.02);
+        }
