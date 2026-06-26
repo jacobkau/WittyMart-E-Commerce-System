@@ -1095,7 +1095,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .logo-container h1 {
             font-size: 1.5rem;
-            color: #ff6738;
+            color: #05573c;
         }
         .logo-container p {
             color: var(--label-color);
@@ -1112,7 +1112,7 @@ body.dark-mode .theme-toggle:hover {
             font-size: 0.9rem;
         }
         .form-group label i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 8px;
             width: 18px;
         }
@@ -1131,7 +1131,7 @@ body.dark-mode .theme-toggle:hover {
             outline: none;
         }
         .input-wrapper input:focus {
-            border-color: #ff6738;
+            border-color: #05573c;
             box-shadow: 0 0 0 3px rgba(255,103,56,0.1);
         }
         .input-wrapper input::placeholder {
@@ -1151,7 +1151,7 @@ body.dark-mode .theme-toggle:hover {
             border: none;
         }
         .toggle-password:hover {
-            color: #ff6738;
+            color: #05573c;
         }
 
        
@@ -1179,7 +1179,7 @@ body.dark-mode .theme-toggle:hover {
         .progress-bar {
             width: 0;
             height: 6px;
-            background: #ff6738;
+            background: #05573c;
             transition: width 1s ease-in-out;
             border-radius: 3px;
             margin-top: 15px;
@@ -1232,7 +1232,7 @@ body.dark-mode .theme-toggle:hover {
         .switch-form button {
             background: none;
             border: none;
-            color: #ff6738;
+            color: #05573c;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.95rem;
@@ -1276,7 +1276,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 20px;
         }
         .modal-content p i {
-            color: #ff6738;
+            color: #05573c;
             font-size: 30px;
             display: block;
             margin-bottom: 10px;
@@ -1296,7 +1296,7 @@ body.dark-mode .theme-toggle:hover {
             font-size: 0.95rem;
         }
         .modal-content #confirmBtn {
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
         }
         .modal-content #confirmBtn:hover {
@@ -1347,7 +1347,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 15px;
         }
         .contact-section h1 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .contact-section > p {
             color: #666;
@@ -1370,13 +1370,13 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .contact-info article:hover {
-            border-color: #ff6738;
+            border-color: #05573c;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255,103,56,0.1);
         }
         .contact-info article i {
             font-size: 30px;
-            color: #ff6738;
+            color: #05573c;
             margin-bottom: 10px;
         }
         .contact-info article h2 {
@@ -1389,7 +1389,7 @@ body.dark-mode .theme-toggle:hover {
             font-size: 0.95rem;
         }
         .contact-info article a {
-            color: #ff6738;
+            color: #05573c;
             text-decoration: none;
         }
         .contact-info article a:hover {
@@ -1418,13 +1418,13 @@ body.dark-mode .theme-toggle:hover {
         }
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: #ff6738;
+            border-color: #05573c;
             outline: none;
             box-shadow: 0 0 0 3px rgba(255,103,56,0.1);
         }
         .contact-form button {
             padding: 12px 35px;
-            background: #ff6738;
+            background:#05573c;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -1465,7 +1465,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 15px;
         }
         .map-placeholder h2 span {
-            color: #ff6738;
+            color:#05573c;
         }
         .map-box {
             border-radius: 12px;
@@ -1532,7 +1532,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 30px;
         }
         .cart h1 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .cart-items {
             margin-bottom: 30px;
@@ -1549,7 +1549,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .cart-item:hover {
-            border-color: #ff6738;
+            border-color: #05573c;
             box-shadow: 0 2px 10px rgba(255,103,56,0.1);
         }
         .cart-item img {
@@ -1571,7 +1571,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .cart-item-price {
             font-weight: 700;
-            color: #ff6738;
+            color: #05573c;
             font-size: 1.1rem;
         }
         .cart-item-actions {
@@ -1581,7 +1581,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .cart-item-actions button {
             padding: 6px 12px;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             border: none;
             border-radius: 6px;
@@ -1601,7 +1601,7 @@ body.dark-mode .theme-toggle:hover {
             background: #f9f9f9;
             padding: 20px;
             border-radius: 10px;
-            border: 2px solid #ff6738;
+            border: 2px solid #05573c;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1613,11 +1613,11 @@ body.dark-mode .theme-toggle:hover {
             font-size: 1.5rem;
         }
         .cart-summary h2 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .checkout-btn {
             padding: 12px 35px;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -1651,7 +1651,7 @@ body.dark-mode .theme-toggle:hover {
             display: inline-block;
             margin-top: 20px;
             padding: 12px 30px;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             text-decoration: none;
             border-radius: 8px;
@@ -1728,7 +1728,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 20px;
         }
         .about h1 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .about h2 {
             font-size: 1.5rem;
@@ -1736,7 +1736,7 @@ body.dark-mode .theme-toggle:hover {
             margin: 25px 0 15px;
         }
         .about h2 i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 10px;
         }
         .about p {
@@ -1759,7 +1759,7 @@ body.dark-mode .theme-toggle:hover {
             border-bottom: none;
         }
         .about ul li i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 10px;
             width: 20px;
         }
@@ -1784,7 +1784,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .faq-item:hover {
-            border-color: #ff6738;
+            border-color: #05573c;
         }
         .faq-question {
             width: 100%;
@@ -1803,7 +1803,7 @@ body.dark-mode .theme-toggle:hover {
             font-family: inherit;
         }
         .faq-question:hover {
-            background: #ff6738;
+            background:#05573c;
             color: #fff;
         }
         .faq-question::after {
@@ -1815,7 +1815,7 @@ body.dark-mode .theme-toggle:hover {
             transform: rotate(180deg);
         }
         .faq-question.active {
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
         }
         .faq-answer {
