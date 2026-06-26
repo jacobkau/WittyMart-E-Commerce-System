@@ -981,7 +981,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .slider-controls button:hover {
-            background: #e55a2b;
+            background: #03402c;
         }
         @media (max-width: 992px) {
             .product {
@@ -1300,7 +1300,7 @@ body.dark-mode .theme-toggle:hover {
             color: #fff;
         }
         .modal-content #confirmBtn:hover {
-            background: #e55a2b;
+            background:#03402c;
             transform: scale(1.02);
         }
         .modal-content #cancelBtn {
@@ -1434,7 +1434,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .contact-form button:hover {
-            background: #e55a2b;
+            background:#03402c;
             transform: scale(1.02);
             box-shadow: 0 5px 15px rgba(255,103,56,0.3);
         }
@@ -1589,7 +1589,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .cart-item-actions button:hover {
-            background: #e55a2b;
+            background: #03402c;
         }
         .cart-item-actions .remove-btn {
             background: #dc3545;
@@ -1627,7 +1627,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .checkout-btn:hover {
-            background: #e55a2b;
+            background: #03402c;
             transform: scale(1.02);
             box-shadow: 0 5px 15px rgba(255,103,56,0.3);
         }
@@ -1659,7 +1659,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .empty-cart .shop-now:hover {
-            background: #e55a2b;
+            background: #03402c;
             transform: scale(1.02);
         }
         @media (max-width: 992px) {
@@ -2003,7 +2003,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .categories-toggle:hover {
-            background: #e55a2b;
+            background: #03402c;
             transform: scale(1.02);
         }
         .categories-toggle i {
