@@ -420,6 +420,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const total = document.getElementById('cart-total').textContent;
             alert(`Thank you for shopping with WittyMart!\nTotal: KES ${total}\nYour order has been placed successfully.`);
         }
+/* === ABOUT PAGE === */
+// FAQ Toggle
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            
+            // Close all FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('open');
+            });
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle the clicked one
+            if (!isOpen) {
+                answer.classList.add('open');
+                button.classList.add('active');
+            }
+        }
+
 
 
 
