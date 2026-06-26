@@ -115,7 +115,7 @@
                 if (width >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
-                        window.location.href = "home.html";
+                        window.location.href = "welcome.html";
                     }, 500);
                 }
             }, 300);
