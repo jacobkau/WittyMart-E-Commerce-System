@@ -345,6 +345,26 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+/* === CONTACT US PAGE ===*/
+        function handleContactForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const status = document.getElementById('form-status');
+
+            if (name && email && message) {
+                status.className = 'form-status success';
+                status.textContent = '✅ Thank you, ' + name + '! Your message has been sent successfully. We\'ll get back to you soon.';
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                status.className = 'form-status error';
+                status.textContent = '❌ Please fill in all fields.';
+            }
+            return false;
+        }
 
 
 
