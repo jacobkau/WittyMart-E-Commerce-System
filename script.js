@@ -61,6 +61,163 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// ==== HOME PAGE ==== //
+     function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('show');
+        }
+
+          // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.getElementById('main-nav').classList.remove('show');
+        }
+
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('#heroSlides .slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            const offset = -index * 100;
+            document.getElementById('heroSlides').style.transform = `translateX(${offset}%)`;
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Auto slide
+        setInterval(nextSlide, 5000);
+
+        // Testimonial Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('#testimonialTrack .slide1');
+        const totalTestimonials = testimonials.length;
+
+        function showTestimonial(index) {
+            if (index < 0) index = totalTestimonials - 1;
+            if (index >= totalTestimonials) index = 0;
+            const offset = -index * 100;
+            document.getElementById('testimonialTrack').style.transform = `translateX(${offset}%)`;
+            currentTestimonial = index;
+        }
+
+        function nextTestimonial() {
+            showTestimonial(currentTestimonial + 1);
+        }
+
+        function prevTestimonial() {
+            showTestimonial(currentTestimonial - 1);
+        }
+
+        // Auto testimonial slide
+        setInterval(nextTestimonial, 6000);
+ // Newsletter Form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing! You will receive updates from WittyMart.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+
+        // Show Page Function
+        function showPage(pageId) {
+            // Hide all subpages
+            var pages = document.querySelectorAll('.subpage');
+            pages.forEach(function(page) {
+                page.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            var links = document.querySelectorAll('.subnav a');
+            links.forEach(function(link) {
+                link.classList.remove('active-link');
+            });
+
+            // Show the clicked subpage
+            var selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            // Add active class to clicked nav link
+            var activeLink = document.getElementById(pageId + 'Link');
+            if (activeLink) {
+                activeLink.classList.add('active-link');
+            }
+        }
+
+        // Default: Show Privacy Policy page on initial load
+        showPage('privacy');
+
+        // Close sidebar on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('main-nav').classList.remove('show');
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getCart() {
   // Retrieve cart from localStorage or return empty array
   const cart = localStorage.getItem("wittymart_cart");
