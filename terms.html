@@ -12,16 +12,172 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* ===== DARK MODE VARIABLES ===== */
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --border-color: #f0f0f0;
+            --shadow-color: rgba(0,0,0,0.1);
+            --primary-color: #05573c;
+            --primary-hover: #03402c;
+            --primary-light: #02c786;
+        }
+        
+        body.dark-mode {
+            --bg-color: #1a1a2e;
+            --text-color: #fff;
+            --card-bg: #2c2c3e;
+            --header-bg: #1a1a2e;
+            --border-color: rgba(255,255,255,0.1);
+            --shadow-color: rgba(0,0,0,0.3);
+        }
+        
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s ease, color 0.3s ease;
         }
+        
+        /* ===== DARK MODE STYLES ===== */
+        body.dark-mode header {
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        body.dark-mode .logo h1 {
+            color: #fff;
+        }
+        
+        body.dark-mode .nav-links li a {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        body.dark-mode .nav-links li a:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        body.dark-mode .nav-links li a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        body.dark-mode .top-cont {
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        body.dark-mode .top-cont h1 {
+            color: #fff;
+        }
+        
+        body.dark-mode .top-cont p {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        body.dark-mode .subnav {
+            background: var(--card-bg);
+            border-bottom-color: var(--border-color);
+        }
+        
+        body.dark-mode .subnav a {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        body.dark-mode .subnav a:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        body.dark-mode .subnav a.active-link {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        body.dark-mode .subpage {
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        body.dark-mode .subpage h2 {
+            color: #fff;
+        }
+        
+        body.dark-mode .subpage p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        body.dark-mode .subpage ul li {
+            color: rgba(255,255,255,0.8);
+            border-bottom-color: var(--border-color);
+        }
+        
+        body.dark-mode .subpage ul li strong {
+            color: #fff;
+        }
+        
+        body.dark-mode .sidebar {
+            background: var(--card-bg);
+        }
+        
+        body.dark-mode .sidebar-header h2 {
+            color: #fff;
+        }
+        
+        body.dark-mode .sidebar ul li a {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        body.dark-mode .sidebar ul li a:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        body.dark-mode .sidebar ul li a i {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .sidebar ul li a:hover i {
+            color: #fff;
+        }
+        
+        body.dark-mode .footer {
+            background: #0a0a1a;
+        }
+        
+        body.dark-mode .footer-card p {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        body.dark-mode .footer-card ul li a {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        body.dark-mode .footer-card ul li a:hover {
+            color: var(--primary-light);
+        }
+        
+        body.dark-mode #newsletter-form input {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        
+        body.dark-mode #newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* ===== HEADER ===== */
         header {
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--header-bg);
+            box-shadow: 0 2px 10px var(--shadow-color);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: background 0.3s ease;
         }
         .header-container {
             max-width: 1200px;
@@ -46,7 +202,8 @@
         }
         .logo h1 {
             font-size: 1.2rem;
-            color: #05573c;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
         }
         .header-actions {
             display: flex;
@@ -58,7 +215,7 @@
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            background: #05573c;
+            background: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -68,7 +225,7 @@
             transition: all 0.3s ease;
         }
         .categories-btn:hover {
-            background: #03402c;
+            background: var(--primary-hover);
             transform: scale(1.02);
         }
         .categories-btn i {
@@ -77,7 +234,7 @@
         .menu-toggle {
             display: none;
             padding: 8px 12px;
-            background: #05573c;
+            background: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -85,7 +242,7 @@
             font-size: 20px;
         }
         .menu-toggle:hover {
-            background: #03402c;
+            background: var(--primary-hover);
         }
         .close-btn {
             display: none;
@@ -104,7 +261,7 @@
         .nav-links li a {
             display: block;
             padding: 8px 14px;
-            color: #333;
+            color: var(--text-color);
             text-decoration: none;
             border-radius: 6px;
             font-size: 14px;
@@ -112,54 +269,55 @@
             transition: all 0.3s ease;
         }
         .nav-links li a:hover {
-            background: #03402c;
+            background: var(--primary-color);
             color: #fff;
         }
         .nav-links li a.active {
-            background: #03402c;
+            background: var(--primary-color);
             color: #fff;
         }
-       .theme-toggle {
-    padding: 10px 14px;
-    background: var(--bg-color, #f0f0f0);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.3s ease;
-    color: var(--text-color, #333);
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.theme-toggle:hover {
-    background: var(--primary-color, #05573c);
-    color: #fff;
-    transform: rotate(20deg) scale(1.1);
-    box-shadow: 0 5px 15px rgba(5, 87, 60, 0.3);
-}
-
-.theme-toggle i {
-    transition: transform 0.3s ease;
-}
-
-.theme-toggle:hover i {
-    transform: rotate(20deg);
-}
-
-/* Dark mode specific */
-body.dark-mode .theme-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
-
-body.dark-mode .theme-toggle:hover {
-    background: var(--primary-color, #05573c);
-}
+        
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            padding: 10px 14px;
+            background: var(--bg-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: rotate(20deg) scale(1.1);
+            box-shadow: 0 5px 15px rgba(5, 87, 60, 0.3);
+        }
+        .theme-toggle i {
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle:hover i {
+            transform: rotate(20deg);
+        }
+        
+        /* Dark mode specific for theme toggle */
+        body.dark-mode .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        body.dark-mode .theme-toggle:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        
+        /* ===== SIDEBAR ===== */
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -179,8 +337,8 @@ body.dark-mode .theme-toggle:hover {
             left: -320px;
             width: 300px;
             height: 100%;
-            background: #fff;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            background: var(--card-bg);
+            box-shadow: 2px 0 10px var(--shadow-color);
             z-index: 2001;
             transition: left 0.3s ease;
             overflow-y: auto;
@@ -194,11 +352,11 @@ body.dark-mode .theme-toggle:hover {
             justify-content: space-between;
             align-items: center;
             padding-bottom: 15px;
-            border-bottom: 2px solid #05573c;
+            border-bottom: 2px solid var(--primary-color);
             margin-bottom: 20px;
         }
         .sidebar-header h2 {
-            color: #333;
+            color: var(--text-color);
         }
         .sidebar-close {
             background: none;
@@ -209,7 +367,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .sidebar-close:hover {
-            color: #05573c;
+            color: var(--primary-color);
             transform: rotate(90deg);
         }
         .sidebar ul {
@@ -221,56 +379,61 @@ body.dark-mode .theme-toggle:hover {
         .sidebar ul li a {
             display: block;
             padding: 10px 15px;
-            color: #333;
+            color: var(--text-color);
             text-decoration: none;
             border-radius: 8px;
             transition: all 0.3s ease;
         }
         .sidebar ul li a:hover {
-            background: #05573c;
+            background: var(--primary-color);
             color: #fff;
             padding-left: 20px;
         }
         .sidebar ul li a i {
             margin-right: 10px;
-            color: #05573c;
+            color: var(--primary-color);
             width: 20px;
         }
         .sidebar ul li a:hover i {
             color: #fff;
         }
+        
+        /* ===== MAIN CONTENT ===== */
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         .top-cont {
-            background: #fff;
+            background: var(--card-bg);
             border-radius: 12px 12px 0 0;
             padding: 30px 40px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: background 0.3s ease;
         }
         .top-cont h1 {
             font-size: 2.5rem;
-            color: #333;
+            color: var(--text-color);
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
         .top-cont h1 span {
-            color: #05573c;
+            color: var(--primary-color);
         }
         .top-cont p {
             color: #666;
             font-size: 1.1rem;
         }
         .subnav {
-            background: #fff;
+            background: var(--card-bg);
             padding: 15px 40px;
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
-            border-bottom: 2px solid #f0f0f0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: background 0.3s ease;
         }
         .subnav a {
             padding: 10px 20px;
@@ -282,22 +445,23 @@ body.dark-mode .theme-toggle:hover {
             border: 2px solid transparent;
         }
         .subnav a:hover {
-            background: #05573c;
+            background: var(--primary-color);
             color: #fff;
             transform: translateY(-2px);
         }
         .subnav a.active-link {
-            background:#05573c;
+            background: var(--primary-color);
             color: #fff;
-            border-color: #05573c;
+            border-color: var(--primary-color);
         }
         .subpage {
             display: none;
-            background: #fff;
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 0 0 12px 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px var(--shadow-color);
             animation: fadeIn 0.3s ease;
+            transition: background 0.3s ease;
         }
         .subpage.active {
             display: block;
@@ -308,11 +472,12 @@ body.dark-mode .theme-toggle:hover {
         }
         .subpage h2 {
             font-size: 2rem;
-            color: #333;
+            color: var(--text-color);
             margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
         .subpage h2 i {
-            color: #05573c;
+            color: var(--primary-color);
             margin-right: 10px;
         }
         .subpage p {
@@ -329,34 +494,37 @@ body.dark-mode .theme-toggle:hover {
             padding: 12px 0;
             color: #555;
             line-height: 1.8;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid var(--border-color);
             font-size: 1rem;
         }
         .subpage ul li:last-child {
             border-bottom: none;
         }
         .subpage ul li strong {
-            color: #333;
+            color: var(--text-color);
             display: block;
             margin-bottom: 5px;
         }
         .subpage ul li i {
-            color: #05573c;
+            color: var(--primary-color);
             margin-right: 10px;
         }
         .subpage a {
-            color: #05573c;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
         }
         .subpage a:hover {
             text-decoration: underline;
         }
+        
+        /* ===== FOOTER ===== */
         .footer {
             background: #1a1a2e;
             color: #fff;
             padding: 40px 20px 20px;
             margin-top: 40px;
+            transition: background 0.3s ease;
         }
         .footer-row {
             max-width: 1200px;
@@ -368,7 +536,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .footer-card h2 {
             font-size: 1.1rem;
-            color: #02c786;
+            color: var(--primary-light);
             margin-bottom: 15px;
         }
         .footer-card p {
@@ -387,11 +555,11 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .footer-card ul li a:hover {
-            color:#02c786;
+            color: var(--primary-light);
             padding-left: 5px;
         }
         .footer-card a {
-            color: #02c786;
+            color: var(--primary-light);
             text-decoration: none;
         }
         .footer-card a:hover {
@@ -407,10 +575,15 @@ body.dark-mode .theme-toggle:hover {
             border: none;
             border-radius: 6px;
             outline: none;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        #newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.5);
         }
         #newsletter-form button {
             padding: 10px 20px;
-            background: #05573c;
+            background: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 6px;
@@ -418,7 +591,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         #newsletter-form button:hover {
-            background:#02c786;
+            background: var(--primary-light);
         }
         #footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -427,6 +600,8 @@ body.dark-mode .theme-toggle:hover {
             color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
+        
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .header-container {
                 flex-wrap: nowrap;
@@ -437,9 +612,9 @@ body.dark-mode .theme-toggle:hover {
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: #fff;
+                background: var(--card-bg);
                 padding: 20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 5px 10px var(--shadow-color);
                 z-index: 999;
             }
             nav.show {
@@ -556,7 +731,7 @@ body.dark-mode .theme-toggle:hover {
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="terms.html" class="active">Terms</a></li>
                     <li><a href="home.html">Account</a></li>
-                    <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-icon"><i class="fas fa-sun"></i></button></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-icon" title="Switch to Dark Mode"><i class="fas fa-sun"></i></button></li>
                 </ul>
             </nav>
             
@@ -578,7 +753,7 @@ body.dark-mode .theme-toggle:hover {
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h2><i class="fas fa-th-list" style="color:#ff6738;"></i> Categories</h2>
+            <h2><i class="fas fa-th-list"></i> Categories</h2>
             <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
         </div>
         <ul>
@@ -598,7 +773,7 @@ body.dark-mode .theme-toggle:hover {
     <!-- Main Content -->
     <main>
         <div class="top-cont">
-            <h1><i class="fas fa-file-contract" style="color:#05573c;"></i> Terms & <span>Policies</span></h1>
+            <h1><i class="fas fa-file-contract" style="color:var(--primary-color);"></i> Terms & <span>Policies</span></h1>
             <p>Read our policies to understand how we operate</p>
         </div>
         
@@ -789,69 +964,70 @@ body.dark-mode .theme-toggle:hover {
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
             document.getElementById('main-nav').classList.remove('show');
-        } 
-        // Enhanced Theme Toggle with System Preference
-function toggleTheme() {
-    const body = document.body;
-    const icon = document.getElementById('theme-icon');
-    
-    body.classList.toggle('dark-mode');
-    
-    // Animated icon transition
-    icon.style.transition = 'transform 0.3s ease';
-    icon.style.transform = 'rotate(180deg)';
-    
-    setTimeout(() => {
-        if (body.classList.contains('dark-mode')) {
-            icon.innerHTML = '<i class="fas fa-moon"></i>';
-            icon.title = 'Switch to Light Mode';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.innerHTML = '<i class="fas fa-sun"></i>';
-            icon.title = 'Switch to Dark Mode';
-            localStorage.setItem('theme', 'light');
         }
-        icon.style.transform = 'rotate(0deg)';
-    }, 150);
-}
 
-// Detect system preference
-function getSystemTheme() {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
-// Load theme with system preference fallback
-document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme');
-    const systemTheme = getSystemTheme();
-    const theme = savedTheme || systemTheme;
-    const icon = document.getElementById('theme-icon');
-    
-    if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        icon.innerHTML = '<i class="fas fa-moon"></i>';
-        icon.title = 'Switch to Light Mode';
-    } else {
-        document.body.classList.remove('dark-mode');
-        icon.innerHTML = '<i class="fas fa-sun"></i>';
-        icon.title = 'Switch to Dark Mode';
-    }
-    
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            const newTheme = e.matches ? 'dark' : 'light';
+        // Enhanced Theme Toggle with Sun/Moon Icons
+        function toggleTheme() {
+            const body = document.body;
             const icon = document.getElementById('theme-icon');
-            if (newTheme === 'dark') {
+            
+            body.classList.toggle('dark-mode');
+            
+            // Animated icon transition
+            icon.style.transition = 'transform 0.3s ease';
+            icon.style.transform = 'rotate(180deg)';
+            
+            setTimeout(() => {
+                if (body.classList.contains('dark-mode')) {
+                    icon.innerHTML = '<i class="fas fa-moon"></i>';
+                    icon.title = 'Switch to Light Mode';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.innerHTML = '<i class="fas fa-sun"></i>';
+                    icon.title = 'Switch to Dark Mode';
+                    localStorage.setItem('theme', 'light');
+                }
+                icon.style.transform = 'rotate(0deg)';
+            }, 150);
+        }
+
+        // Detect system preference
+        function getSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Load theme with system preference fallback
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemTheme = getSystemTheme();
+            const theme = savedTheme || systemTheme;
+            const icon = document.getElementById('theme-icon');
+            
+            if (theme === 'dark') {
                 document.body.classList.add('dark-mode');
                 icon.innerHTML = '<i class="fas fa-moon"></i>';
+                icon.title = 'Switch to Light Mode';
             } else {
                 document.body.classList.remove('dark-mode');
                 icon.innerHTML = '<i class="fas fa-sun"></i>';
+                icon.title = 'Switch to Dark Mode';
             }
-        }
-    });
-});
+            
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    const icon = document.getElementById('theme-icon');
+                    if (newTheme === 'dark') {
+                        document.body.classList.add('dark-mode');
+                        icon.innerHTML = '<i class="fas fa-moon"></i>';
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        icon.innerHTML = '<i class="fas fa-sun"></i>';
+                    }
+                }
+            });
+        });
 
         // Newsletter Form
         document.getElementById('newsletter-form').addEventListener('submit', function(e) {
