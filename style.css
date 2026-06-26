@@ -720,7 +720,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 15px;
         }
         .about-shop h1 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .about-shop p {
             color: #666;
@@ -778,7 +778,7 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .slider-nav:hover {
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
         }
         .slider-nav.prev {
@@ -796,7 +796,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 30px;
         }
         .features h2 span {
-            color: #ff6738;
+            color:#05573c;
         }
   .products-grid {
     display: flex;
@@ -896,7 +896,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 15px;
         }
         .about-shop-section h2 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .about-shop-section p {
             color: #666;
@@ -917,7 +917,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .about-shop-section ul li:before {
             content: '✓';
-            color: #ff6738;
+            color:#05573c;
             font-weight: bold;
         }
         .testimonials-slider {
@@ -933,7 +933,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 30px;
         }
         .testimonials-slider h2 span {
-            color: #ff6738;
+            color: #05573c;
         }
         .slider-container {
             overflow: hidden;
@@ -961,7 +961,7 @@ body.dark-mode .theme-toggle:hover {
         .slide1 blockquote cite {
             display: block;
             margin-top: 10px;
-            color: #ff6738;
+            color: #05573c;
             font-weight: 600;
             font-style: normal;
         }
@@ -973,7 +973,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .slider-controls button {
             padding: 8px 20px;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             border: none;
             border-radius: 6px;
