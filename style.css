@@ -987,7 +987,25 @@ body.dark-mode .theme-toggle:hover {
         }
 /* ===WELCOME === */
 
-
+  .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .logo-container img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .logo-container h1 {
+            font-size: 1.5rem;
+            color: #ff6738;
+        }
+        .logo-container p {
+            color: var(--label-color);
+            font-size: 0.9rem;
+        }
         .form-group {
             margin-bottom: 15px;
         }
