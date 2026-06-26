@@ -1839,7 +1839,7 @@ body.dark-mode .theme-toggle:hover {
             padding: 30px;
             background: #f9f9f9;
             border-radius: 12px;
-            border: 2px solid #ff6738;
+            border: 2px solid #05573c;
             text-align: center;
         }
         .contact-box h2 {
@@ -1847,7 +1847,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 15px;
         }
         .contact-box h2 i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 10px;
         }
         .contact-box p {
@@ -1856,12 +1856,12 @@ body.dark-mode .theme-toggle:hover {
             font-size: 1.05rem;
         }
         .contact-box p i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 10px;
             width: 25px;
         }
         .contact-box a {
-            color: #ff6738;
+            color: #05573c;
             text-decoration: none;
             font-weight: 600;
         }
@@ -1930,15 +1930,15 @@ body.dark-mode .theme-toggle:hover {
             display: inline-block;
             padding: 10px 30px;
             background: transparent;
-            color: #ff6738;
-            border: 2px solid #ff6738;
+            color:#05573c;
+            border: 2px solid #05573c;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
         }
         .linkerbtn:hover {
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             transform: scale(1.02);
         }
@@ -1993,7 +1993,7 @@ body.dark-mode .theme-toggle:hover {
             align-items: center;
             gap: 8px;
             padding: 10px 18px;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -2015,7 +2015,7 @@ body.dark-mode .theme-toggle:hover {
             padding: 30px 35px;
             margin-bottom: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 5px solid #ff6738;
+            border-left: 5px solid #05573c;
         }
         .welcome-section h1 {
             font-size: 1.8rem;
@@ -2023,7 +2023,7 @@ body.dark-mode .theme-toggle:hover {
             margin-bottom: 5px;
         }
         .welcome-section h1 i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 10px;
         }
         .welcome-section p {
@@ -2032,7 +2032,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .welcome-section .badge {
             display: inline-block;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             padding: 3px 12px;
             border-radius: 20px;
@@ -2051,7 +2051,7 @@ body.dark-mode .theme-toggle:hover {
             padding: 20px 25px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border-left: 4px solid #ff6738;
+            border-left: 4px solid #05573c;
         }
         .stats-grid .stat-card:hover {
             transform: translateY(-5px);
@@ -2059,7 +2059,7 @@ body.dark-mode .theme-toggle:hover {
         }
         .stats-grid .stat-card .stat-icon {
             font-size: 28px;
-            color: #ff6738;
+            color:#05573c;
             margin-bottom: 10px;
         }
         .stats-grid .stat-card .stat-number {
@@ -2100,11 +2100,11 @@ body.dark-mode .theme-toggle:hover {
             color: #333;
         }
         .dashboard-card .card-header h3 i {
-            color: #ff6738;
+            color: #05573c;
             margin-right: 8px;
         }
         .dashboard-card .card-header a {
-            color: #ff6738;
+            color: #05573c;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
@@ -2154,7 +2154,7 @@ body.dark-mode .theme-toggle:hover {
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
             display: flex;
             align-items: center;
@@ -2186,9 +2186,9 @@ body.dark-mode .theme-toggle:hover {
             transition: all 0.3s ease;
         }
         .quick-actions .action-btn:hover {
-            background: #ff6738;
+            background: #05573c;
             color: #fff;
-            border-color: #ff6738;
+            border-color: #05573c;
             transform: translateY(-3px);
         }
         .quick-actions .action-btn i {
