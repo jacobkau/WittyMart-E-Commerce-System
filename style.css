@@ -702,7 +702,7 @@ body.dark-mode .theme-toggle:hover {
                 font-size: 0.9rem;
             }
         }
-/* ==== HOME PAGE ====*/
+/* ==== HOME PAGE + SHOP ====*/
 
         .hero {
             display: grid;
@@ -846,6 +846,32 @@ body.dark-mode .theme-toggle:hover {
             background: #e55a2b;
             transform: scale(1.02);
         }
+       .products-section h2 span {
+            color: #ff6738;
+        }    .product .price {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ff6738;
+            margin-bottom: 15px;
+        }
+        .product .add-to-cart {
+            padding: 10px 25px;
+            background: #ff6738;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .product .add-to-cart:hover {
+            background: #e55a2b;
+            transform: scale(1.02);
+        }
+
+
+
         .divider {
             border: none;
             height: 2px;
@@ -952,6 +978,9 @@ body.dark-mode .theme-toggle:hover {
             background: #e55a2b;
         }
 @media (max-width: 992px) {
+             .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
             .hero {
                 grid-template-columns: 1fr;
             }
@@ -965,6 +994,10 @@ body.dark-mode .theme-toggle:hover {
             }
             .hero-slider {
                 height: 200px;
+            } 
+              .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
         }
 @media (max-width: 480px) {
@@ -978,6 +1011,19 @@ body.dark-mode .theme-toggle:hover {
             .product img {
                 height: 120px;
             }
+             .product h3 {
+                font-size: 0.9rem;
+            }
+            .product .price {
+                font-size: 1rem;
+            }
+            .product .add-to-cart {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            .products-section h2 {
+                font-size: 1.3rem;
+            }
             .about-shop h1 {
                 font-size: 1.5rem;
             }
@@ -985,7 +1031,8 @@ body.dark-mode .theme-toggle:hover {
                 height: 180px;
             }
         }
-/* ===WELCOME === */
+
+/* ===WELCOME PAGE === */
 
   .logo-container {
             text-align: center;
