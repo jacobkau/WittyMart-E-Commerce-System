@@ -1,3 +1,66 @@
+// Enhanced Theme Toggle with Sun/Moon Icons
+function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('theme-icon');
+    
+    body.classList.toggle('dark-mode');
+    
+    // Animated icon transition
+    icon.style.transition = 'transform 0.3s ease';
+    icon.style.transform = 'rotate(180deg)';
+    
+    setTimeout(() => {
+        if (body.classList.contains('dark-mode')) {
+            icon.innerHTML = '<i class="fas fa-moon"></i>';
+            icon.title = 'Switch to Light Mode';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            icon.innerHTML = '<i class="fas fa-sun"></i>';
+            icon.title = 'Switch to Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+        icon.style.transform = 'rotate(0deg)';
+    }, 150);
+}
+
+// Detect system preference
+function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+// Load theme with system preference fallback
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    const systemTheme = getSystemTheme();
+    const theme = savedTheme || systemTheme;
+    const icon = document.getElementById('theme-icon');
+    
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        icon.innerHTML = '<i class="fas fa-moon"></i>';
+        icon.title = 'Switch to Light Mode';
+    } else {
+        document.body.classList.remove('dark-mode');
+        icon.innerHTML = '<i class="fas fa-sun"></i>';
+        icon.title = 'Switch to Dark Mode';
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            const icon = document.getElementById('theme-icon');
+            if (newTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                icon.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.body.classList.remove('dark-mode');
+                icon.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+    });
+});
+
 function getCart() {
   // Retrieve cart from localStorage or return empty array
   const cart = localStorage.getItem("wittymart_cart");
@@ -231,35 +294,7 @@ function toggleSidebar() {
     document.querySelector('.menu-toggle').style.display = 'inline-block';
     document.querySelector('.close-btn').style.display = 'none';
   }
-  function toggleTheme() {
-    const body = document.body;
-    const themeIcon = document.getElementById('theme-icon');
-  
-    body.classList.toggle('dark-theme');
-  
-    // Update icon and localStorage
-    if (body.classList.contains('dark-theme')) {
-      localStorage.setItem('theme', 'dark');
-      if (themeIcon) themeIcon.textContent = '🌙';
-    } else {
-      localStorage.setItem('theme', 'light');
-      if (themeIcon) themeIcon.textContent = '🌞';
-    }
-  }
-  
-  // Apply saved theme on load
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    const themeIcon = document.getElementById('theme-icon');
-  
-    if (savedTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-      if (themeIcon) themeIcon.textContent = '🌙';
-    } else {
-      if (themeIcon) themeIcon.textContent = '🌞';
-    }
-  });
-  // JavaScript
+ 
 const track = document.querySelector('.slider-track');
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('prevBtn');
