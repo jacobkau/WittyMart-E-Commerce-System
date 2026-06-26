@@ -985,3 +985,238 @@ body.dark-mode .theme-toggle:hover {
                 height: 180px;
             }
         }
+/* ===WELCOME === */
+
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--label-color);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #ff6738;
+            margin-right: 8px;
+            width: 18px;
+        }
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .input-wrapper input:focus {
+            border-color: #ff6738;
+            box-shadow: 0 0 0 3px rgba(255,103,56,0.1);
+        }
+        .input-wrapper input::placeholder {
+            color: #aaa;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+        }
+        .toggle-password:hover {
+            color: #ff6738;
+        }
+
+       
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--button-bg);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: var(--button-hover);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255,103,56,0.3);
+        }
+        .btn-submit i {
+            margin-right: 8px;
+        }
+        .progress-bar {
+            width: 0;
+            height: 6px;
+            background: #ff6738;
+            transition: width 1s ease-in-out;
+            border-radius: 3px;
+            margin-top: 15px;
+        }
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+        .message.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .message.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .theme-toggle {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .theme-toggle button {
+            padding: 8px 20px;
+            background: var(--button-bg);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .theme-toggle button:hover {
+            background: var(--button-hover);
+            transform: scale(1.02);
+        }
+        .theme-toggle button i {
+            margin-right: 8px;
+        }
+        .switch-form {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .switch-form button {
+            background: none;
+            border: none;
+            color: #ff6738;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+        }
+        .switch-form button:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background: var(--modal-bg);
+            margin: 20% auto;
+            padding: 30px;
+            max-width: 350px;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--text-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+        }
+        .modal-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .modal-content p i {
+            color: #ff6738;
+            font-size: 30px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .modal-content .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .modal-content button {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .modal-content #confirmBtn {
+            background: #ff6738;
+            color: #fff;
+        }
+        .modal-content #confirmBtn:hover {
+            background: #e55a2b;
+            transform: scale(1.02);
+        }
+        .modal-content #cancelBtn {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .modal-content #cancelBtn:hover {
+            background: #ccc;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+            .logo-container h1 {
+                font-size: 1.2rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            .input-wrapper input {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+            .btn-submit {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            .modal-content {
+                margin: 30% auto;
+                padding: 20px;
+            }
+        }
