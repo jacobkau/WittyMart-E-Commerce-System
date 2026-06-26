@@ -336,6 +336,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+/* === SHOP === */
+ // Add to Cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                alert(`${product} added to cart!`);
+            });
+        });
 
 
 
